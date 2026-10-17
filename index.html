@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Catalyst Mod Kit</title>
+<meta name="description" content="Unofficial community pocket guide to Catalyst (catalyst.app): vision, product map, copy-ready FAQ replies and Discord channel templates.">
+<meta property="og:title" content="Catalyst Mod Kit">
+<meta property="og:description" content="Unofficial community guide to Catalyst: vision, product, FAQ replies, Discord playbook.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d94800'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='700' text-anchor='middle' fill='white'%3ECAT%3C/text%3E%3C/svg%3E">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one scrolling field guide, sticky thumb-reach chip nav, copyable "reply bubbles" for Discord use */
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --sunk:#e8eaee; --ink:#16171b; --muted:#5b606b; --line:#d9dce2;
+  --accent:#d94800; --accent-ink:#ffffff; --accent-soft:#ffe6d9; --blue:#2f6fa6; --blue-soft:#dcebf7;
+  --warn:#9a5b00; --warn-soft:#fff1d6; --ok:#1d7a4a;
+  --f-display:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"DM Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111215; --surface:#1a1c20; --sunk:#23262b; --ink:#eceef2; --muted:#9aa0ab; --line:#2e3238;
+  --accent:#ff6a26; --accent-ink:#140800; --accent-soft:#3a1d0e; --blue:#84b7e2; --blue-soft:#17283a;
+  --warn:#f0b65a; --warn-soft:#33260f; --ok:#5fd19a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111215; --surface:#1a1c20; --sunk:#23262b; --ink:#eceef2; --muted:#9aa0ab; --line:#2e3238;
+  --accent:#ff6a26; --accent-ink:#140800; --accent-soft:#3a1d0e; --blue:#84b7e2; --blue-soft:#17283a;
+  --warn:#f0b65a; --warn-soft:#33260f; --ok:#5fd19a; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.6 var(--f-body);-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+h2{font-size:1.5rem;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.eyebrow{font:500 .72rem/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+/* header */
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:22px 18px;display:grid;gap:10px}
+.brandrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tag{font:500 .7rem/1 var(--f-mono);letter-spacing:.06em;padding:5px 8px;border-radius:5px;background:var(--accent);color:var(--accent-ink)}
+h1{font-size:clamp(1.9rem,7vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+.lede{color:var(--muted);max-width:60ch}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;font:400 .82rem/1.4 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.stats b{color:var(--ink);font-weight:500}
+
+/* sticky nav */
+nav.chips{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.chips .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.chips .wrap::-webkit-scrollbar{display:none}
+nav.chips a{flex:none;text-decoration:none;color:var(--ink);font:500 .85rem/1 var(--f-body);padding:9px 13px;border-radius:999px;background:var(--sunk);white-space:nowrap}
+nav.chips a.on{background:var(--ink);color:var(--bg)}
+
+main .wrap{display:grid;gap:44px;padding-block:28px 64px}
+section{display:grid;gap:16px;min-width:0}
+.sec-head{display:grid;gap:6px}
+
+/* rule box */
+.rule{display:grid;gap:6px;padding:14px 16px;border-radius:10px;background:var(--warn-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--warn) 30%,transparent)}
+.rule strong{color:var(--warn);font-family:var(--f-display)}
+.int{display:inline-block;font:500 .64rem/1 var(--f-mono);letter-spacing:.07em;padding:3px 6px;border-radius:4px;background:var(--warn-soft);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);vertical-align:2px;margin-left:4px}
+
+/* pitch */
+.pitch{display:grid;gap:10px}
+.lang{font:500 .7rem/1 var(--f-mono);letter-spacing:.08em;color:var(--muted)}
+
+/* quotes */
+.quotes{display:grid;gap:10px}
+blockquote{margin:0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;gap:6px}
+blockquote q{font-family:var(--f-display);font-weight:500;font-size:1.02rem;line-height:1.35;quotes:"“" "”"}
+blockquote cite{font:400 .78rem/1.3 var(--f-mono);color:var(--muted);font-style:normal}
+.subhead{font:700 .95rem/1.2 var(--f-display);margin-top:6px}
+
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:6px}
+ul.plain li::marker{color:var(--accent)}
+.not{display:grid;gap:8px}
+.not div{padding:10px 12px;border-radius:8px;background:var(--sunk);display:grid;gap:2px}
+.not b{font-family:var(--f-display)}
+
+/* pipeline */
+.pipe{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.pipe ol{list-style:none;margin:0;padding:14px;display:flex;gap:8px;min-width:640px}
+.pipe li{flex:1;display:grid;gap:4px;align-content:start;padding:10px;border-radius:8px;background:var(--sunk);position:relative}
+.pipe li:not(:last-child)::after{content:"→";position:absolute;right:-8px;top:12px;color:var(--accent);font-family:var(--f-mono);font-size:.8rem}
+.pipe .k{font:500 .68rem/1 var(--f-mono);letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+.pipe .v{font-size:.82rem;line-height:1.35}
+.example{font:400 .86rem/1.5 var(--f-mono);padding:12px 14px;border-radius:10px;background:var(--sunk);border-left:3px solid var(--accent)}
+
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font:500 .72rem/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--sunk)}
+td:first-child{font-weight:600;white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.datagrid div{padding:10px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--line);font-size:.86rem;min-width:0}
+.datagrid b{display:block;font-family:var(--f-display);font-size:.9rem}
+
+/* faq bubbles */
+.faq{display:grid;gap:10px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+summary{cursor:pointer;list-style:none;padding:13px 14px;font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 1.1rem/1 var(--f-mono);color:var(--accent);flex:none}
+details[open] summary::after{content:"−"}
+.ans{padding:0 14px 14px;display:grid;gap:10px}
+.bubble{display:grid;gap:8px;padding:12px;border-radius:10px;background:var(--blue-soft)}
+.bubble .who{font:500 .7rem/1 var(--f-mono);letter-spacing:.06em;color:var(--blue)}
+.bubble p{font-size:.93rem}
+.note-id{font-size:.86rem;color:var(--muted)}
+.copy{justify-self:start;font:500 .8rem/1 var(--f-body);padding:9px 14px;border-radius:8px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer;min-height:36px}
+.copy.done{background:var(--ok);color:var(--surface)}
+
+/* templates */
+.chan{display:grid;gap:12px;padding:16px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.chan h3 .hash{color:var(--accent);font-family:var(--f-mono)}
+pre.tpl{margin:0;white-space:pre-wrap;word-break:break-word;font:400 .82rem/1.55 var(--f-mono);padding:12px;border-radius:8px;background:var(--sunk);overflow-x:auto}
+
+.steps{counter-reset:s;display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start}
+.steps li::before{content:counter(s);font:500 .8rem/30px var(--f-mono);text-align:center;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent)}
+.never{padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+.never li::marker{color:var(--warn)}
+
+.gloss{display:grid;gap:0;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.gloss div{display:grid;grid-template-columns:minmax(110px,32%) 1fr;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:.9rem}
+.gloss div:last-child{border-bottom:0}
+.gloss dt{font:500 .82rem/1.4 var(--f-mono)}
+.gloss dd{margin:0;color:var(--muted)}
+
+.src{font-size:.85rem;display:grid;gap:4px}
+footer{color:var(--muted);font:400 .78rem/1.5 var(--f-mono);padding-block:0 32px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow"><span class="tag">CAT</span><span class="eyebrow">Discord · Regional Mod Prep · data 17 Okt 2026</span></div>
+    <h1>Catalyst Mod Kit</h1>
+    <p class="lede">Contekan saku untuk aktif di #trade-ideas, #general, dan #feedback: visi, produk, jawaban FAQ siap salin, dan jalur menuju Regional Moderator.</p>
+    <div class="stats"><span>Discord <b class="num">4.432</b> member</span><span>X <b class="num">11.361</b> followers</span><span>Seed <b>$30M</b> · Sequoia</span><span>Token: <b>tidak ada</b></span></div>
+  </div>
+</header>
+
+<nav class="chips" aria-label="Bagian">
+  <div class="wrap">
+    <a href="#inti">Inti</a><a href="#visi">Visi &amp; Misi</a><a href="#produk">Produk</a><a href="#faq">FAQ salin</a><a href="#channel">Channel</a><a href="#mod">Jalur Mod</a><a href="#tim">Tim</a><a href="#glosarium">Glosarium</a><a href="#sumber">Sumber</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap">
+
+<div class="rule" role="note">
+  <strong>Aturan emas</strong>
+  <p>Di Discord, sampaikan hanya yang <b>sudah diumumkan resmi</b> oleh @CatalystLabsX, FAQ, atau tim. Jangan menebak fitur yang belum diumumkan.</p>
+</div>
+
+<section id="inti">
+  <div class="sec-head"><span class="eyebrow">30 detik</span><h2>Catalyst dalam satu napas</h2></div>
+  <div class="pitch">
+    <span class="lang">ID</span>
+    <p>Catalyst mengubah <b>keyakinanmu tentang dunia</b> menjadi <b>strategi trading yang berjalan sendiri</b>. Kamu menulis dengan bahasa biasa. AI agent meriset, memilih instrumen (token, perps, saham, prediction market), menyusun workflow, memantau sinyal, lalu mengeksekusi dalam batas yang kamu setujui. Dana tetap di wallet non-custodial milikmu.</p>
+  </div>
+  <details>
+    <summary>Versi EN untuk dipakai di Discord</summary>
+    <div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="pitch-en">Catalyst is the intent layer for all of finance. Describe your idea or thesis in plain English, and Catalyst researches it, builds a visual workflow, monitors real-time signals, and executes trades within the budget and conditions you approve. It's non-custodial, and it's free during the research preview.</p>
+      <button class="copy" type="button" data-copy="pitch-en">Salin</button></div></div>
+  </details>
+  <p class="eyebrow">Tagline: “Intelligence at your fingertips.”</p>
+</section>
+
+<section id="visi">
+  <div class="sec-head"><span class="eyebrow">Kutipan asli tim &amp; investor</span><h2>Visi, misi, tujuan</h2></div>
+
+  <p class="subhead">Visi · ke mana arahnya</p>
+  <div class="quotes">
+    <blockquote><q>Universal orchestration layer for turning financial ideas into reality.</q><cite>Sequoia, Partnering with Catalyst</cite></blockquote>
+    <blockquote><q>The intent layer for all of finance.</q><cite>FAQ resmi catalyst.app</cite></blockquote>
+    <blockquote><q>We're building a new primitive for interacting with financial markets!</q><cite>Dylan Iskandar · @iskdyl</cite></blockquote>
+    <blockquote><q>Explore the future of finance as we enter the dawn of superintelligence.</q><cite>Justin Zheng · @jzlegion</cite></blockquote>
+  </div>
+
+  <p class="subhead">Misi · yang dikerjakan sekarang</p>
+  <div class="quotes">
+    <blockquote><q>Robinhood and Revolut democratised access to financial markets. But access ≠ sophistication. AI has the potential to change that.</q><cite>George Robson, Sequoia</cite></blockquote>
+    <blockquote><q>The point of Catalyst is to move everybody up the curve in terms of sophistication.</q><cite>George Robson, ke Fortune</cite></blockquote>
+    <blockquote><q>We want to build safe, trustworthy finance.</q><cite>Dylan Iskandar, ke Fortune</cite></blockquote>
+    <blockquote><q>We want to be the ones that can safeguard your cash and help you reach your goals.</q><cite>Justin Zheng, ke Fortune</cite></blockquote>
+  </div>
+
+  <p class="subhead">Tujuan konkret</p>
+  <ul class="plain">
+    <li><b>Intent → eksekusi, end-to-end.</b> “People will simply state an intent, and we have our agents to figure out everything end to end.”</li>
+    <li><b>Semua pasar di satu tempat.</b> Spot token, perps, saham tertokenisasi, prediction market, “with more onchain and offchain assets coming soon”.</li>
+    <li><b>Hedging untuk semua orang.</b> “A farmer shouldn't need a hedge fund to be able to hedge.”</li>
+    <li><b>Edukasi risiko yang personal.</b> “We're building a lot of user education tools that can explain the safety and risks.”</li>
+    <li><b>Retail trading for everyone.</b> Research preview dulu, lalu dibuka per batch dari waitlist, lalu tersedia luas.</li>
+    <li><b>Aman tapi seru.</b> “Can we make investing safely just as fun as sports gambling? I think we can.”</li>
+  </ul>
+
+  <p class="subhead">Masalah yang diselesaikan</p>
+  <p>Investasi selalu dimulai dari ide, tapi mengubah ide menjadi trade butuh keahlian: memilih instrumen, kapan memakai leverage, membuat trade yang efisien biaya, dan menentukan pemicunya. Orang biasa akhirnya membayar manajer atau sekadar membeli dan berharap. Trading institusi sudah algoritmik, sementara keuangan pribadi masih manual.</p>
+  <div class="example">Contoh Sequoia: kopimu makin mahal → kamu membaca soal kemarau di Brasil → yakin harga terus naik → Catalyst mengubah firasat itu menjadi strategi yang terstruktur dan sudah diuji.</div>
+  <blockquote><q>how many times have you said “i knew that was gonna happen” and didn't trade on it. never again.</q><cite>Jake Paul, investor via Anti Fund</cite></blockquote>
+
+  <p class="subhead">Yang BUKAN Catalyst</p>
+  <div class="not">
+    <div><b>Bukan kasino</b><span>“We're not here to build a casino.” / “not here to build a gambling app.”</span></div>
+    <div><b>Bukan LLM yang dibiarkan bebas</b><span>“We don't just connect an LLM to your brokerage account and let it trade freely.”</span></div>
+    <div><b>Bukan kustodian</b><span>“Catalyst does not have access to user funds, we are non-custodial.”</span></div>
+    <div><b>Bukan proyek token</b><span>Tidak ada token resmi. Token “Catalyst” atau CATA di Solana itu palsu dan tidak terafiliasi.</span></div>
+  </div>
+</section>
+
+<section id="produk">
+  <div class="sec-head"><span class="eyebrow">Peta produk</span><h2>Semua yang dibangun</h2></div>
+
+  <p class="subhead">Alur inti</p>
+  <div class="pipe" tabindex="0" aria-label="Alur workflow, geser ke samping">
+    <ol>
+      <li><span class="k">Intent</span><span class="v">Tulis ide dengan bahasa biasa</span></li>
+      <li><span class="k">Riset</span><span class="v">Agen mengumpulkan data dan bertanya balik bila perlu</span></li>
+      <li><span class="k">Workflow</span><span class="v">Signal → trigger → kondisi → budget → aksi</span></li>
+      <li><span class="k">Approve</span><span class="v">Kamu review dan setujui</span></li>
+      <li><span class="k">Strategy</span><span class="v">Berjalan dengan kas sendiri; bisa di-pause atau diubah</span></li>
+      <li><span class="k">Close-out</span><span class="v">Hasil kembali ke Catalyst Cash</span></li>
+    </ol>
+  </div>
+  <div class="example">“If the Associated Press tweets positively about Anthropic, capitalize on it. If not, short it. If CNN tweets something opposite, then sell the position. Make sure that we take profit and set a stop loss.”<br><span class="eyebrow">Contoh prompt resmi di catalyst.app</span></div>
+
+  <p class="subhead">Fitur resmi</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Fitur</th><th>Fungsi</th></tr></thead>
+    <tbody>
+      <tr><td>Widgets</td><td>Prediction markets, Stocks, Options (unusual flow), Perpetuals (funding, OI), Sentiment, Social, Fund flows, Portfolio, News</td></tr>
+      <tr><td>Workflows</td><td>Menggabungkan sinyal, kondisi, dan trade yang berjalan otomatis</td></tr>
+      <tr><td>Notifications</td><td>Alert saat trigger terpenuhi, misalnya odds Ballon d'Or Lamine Yamal di atas 65%</td></tr>
+      <tr><td>Quick trade</td><td>Pilih pasar, atur ukuran, review, lalu eksekusi dalam beberapa klik</td></tr>
+      <tr><td>Strategies</td><td>Pantau holding, aktivitas, dan bandingkan kinerja</td></tr>
+      <tr><td>Catalyst Cash</td><td>Deposit sekali dalam aset apa pun, dirutekan otomatis ke venue mana pun. Tanpa bridging manual.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="subhead">Dana, biaya, keamanan (resmi)</p>
+  <ul class="plain">
+    <li>Deposit: Apple Pay, kartu kredit, USDC, SOL, ETH, BNB. Withdraw: <b>stablecoin saja</b> untuk saat ini, fiat “coming soon”.</li>
+    <li>Biaya: <b>gratis selama research preview</b>. Model biaya setelahnya belum diumumkan.</li>
+    <li>Wallet non-custodial via <b>Privy</b>, eksekusi bersama partner <b>Tempo</b>. “Every action is verifiable end-to-end.”</li>
+    <li>Kamu yang mengatur budget, strategi, dan kondisi eksekusi; pause atau ubah kapan saja.</li>
+    <li>Akses: research preview, dibuka per batch via email, ada invite code dan referral link.</li>
+  </ul>
+
+  </section>
+
+<section id="faq">
+  <div class="sec-head"><span class="eyebrow">Tap untuk buka · Salin lalu tempel di #general</span><h2>FAQ siap jawab</h2></div>
+  <div class="faq">
+    <details><summary>Ada token / airdrop?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f1">No official token has been announced. Any “Catalyst” token you see on Solana is not affiliated, so please don't buy it. Follow @CatalystLabsX for official news.</p>
+      <button class="copy" type="button" data-copy="f1">Salin</button></div>
+      <p class="note-id">Jangan pernah menjanjikan airdrop. Laporkan link token palsu ke tim.</p></div></details>
+
+    <details><summary>Kapan saya dapat akses?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f2">Access is rolling out in batches from the waitlist. Make sure you signed up at catalyst.app with the email you check, and keep an eye on your inbox, including spam.</p>
+      <button class="copy" type="button" data-copy="f2">Salin</button></div></div></details>
+
+    <details><summary>Apakah berbayar?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f3">Catalyst is free during the research preview.</p>
+      <button class="copy" type="button" data-copy="f3">Salin</button></div></div></details>
+
+    <details><summary>Aman? Dana dipegang Catalyst?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f4">Catalyst is non-custodial. Your funds sit in your own wallet (powered by Privy), and Catalyst can't access them. Agents only act within the budget and conditions you approve, and you can pause or change a strategy anytime. Market risk still applies, so start small.</p>
+      <button class="copy" type="button" data-copy="f4">Salin</button></div></div></details>
+
+    <details><summary>Bisa trading apa saja?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f5">Spot tokens, perpetuals, tokenized stocks, and prediction markets, with more onchain and offchain assets coming soon. You can combine them in one workflow.</p>
+      <button class="copy" type="button" data-copy="f5">Salin</button></div></div></details>
+
+    <details><summary>Deposit dan withdraw?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f6">Deposit with Apple Pay, credit card, or crypto (USDC, SOL, ETH, BNB). Withdrawals are in stablecoins for now, and fiat withdrawals are coming soon.</p>
+      <button class="copy" type="button" data-copy="f6">Salin</button></div></div></details>
+
+    <details><summary>Catalyst Cash itu apa?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f7">Catalyst Cash is the internal capital routing system. Deposit once in any supported currency, and Catalyst routes your capital to whichever venue a trade needs. No manual bridging or network switching.</p>
+      <button class="copy" type="button" data-copy="f7">Salin</button></div></div></details>
+
+    <details><summary>Bedanya dengan bot trading / ChatGPT?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f8">It doesn't just chat. Catalyst turns your idea into a visual workflow (signals → conditions → trades), monitors live data across markets, and executes within limits you approve. Every action is verifiable end-to-end.</p>
+      <button class="copy" type="button" data-copy="f8">Salin</button></div></div></details>
+
+    <details><summary>Ini judi?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f9">The team has been clear: “We're not here to build a casino.” The goal is safe, trustworthy finance, giving everyday people tools like hedging that used to need a hedge fund, plus education on risk.</p>
+      <button class="copy" type="button" data-copy="f9">Salin</button></div></div></details>
+
+    <details><summary>Tersedia di negara saya?</summary><div class="ans"><div class="bubble"><span class="who">REPLY · EN</span>
+      <p id="f10">Availability can differ by region and by market, since each venue has its own rules. The team will share details as access expands, so stay tuned to announcements.</p>
+      <button class="copy" type="button" data-copy="f10">Salin</button></div>
+      <p class="note-id">Jangan menjanjikan apa pun. Kalau pertanyaan ini sering muncul, catat dan sampaikan ke tim lewat #feedback.</p></div></details>
+  </div>
+</section>
+
+<section id="channel">
+  <div class="sec-head"><span class="eyebrow">3 channel yang bisa kamu pakai</span><h2>Playbook per channel</h2></div>
+
+  <div class="chan">
+    <h3><span class="hash">#</span>trade-ideas · panggung utama</h3>
+    <p>Tulis ide yang terdengar seperti prompt Catalyst, supaya tim langsung melihatmu sebagai power user. Angkat sudut pandang Asia/Indonesia: kebijakan BI, komoditas (nikel, CPO, batu bara), event regional di Polymarket.</p>
+    <pre class="tpl" id="t1">Thesis: BI rate cut cycle → EM risk-on, IDR weakens vs USD
+Signals: BI announcement, USD/IDR, DXY, Polymarket odds on next Fed cut
+Workflow I'd ask Catalyst for:
+  IF BI cuts AND DXY &lt; 100 → long SOL perp 2x, $50 budget, TP +15%, SL −7%
+  ELSE → notify me only
+Open question: how would the agent choose spot vs perp here?
+(not financial advice)</pre>
+    <button class="copy" type="button" data-copy="t1">Salin template</button>
+    <ul class="plain"><li>Selalu cantumkan budget, TP/SL, dan “not financial advice”.</li><li>Gabungkan prediction market, perps, dan saham dalam satu ide. Itulah kekuatan unik Catalyst.</li><li>Balas ide orang lain dengan membingkainya sebagai workflow: sinyal X, kondisi Y.</li></ul>
+  </div>
+
+  <div class="chan">
+    <h3><span class="hash">#</span>general</h3>
+    <ul class="plain">
+      <li>Jadi orang pertama yang menjawab pertanyaan berulang dengan bubble FAQ di atas.</li>
+      <li>Luruskan misinformasi: token palsu, “kapan airdrop”, klaim fitur yang belum diumumkan.</li>
+      <li>Sambut member baru, terutama dari Asia, dan arahkan ke channel yang tepat.</li>
+      <li>Laporkan DM palsu dan link phishing ke tim dengan screenshot. Jangan berdebat panjang di publik.</li>
+    </ul>
+  </div>
+
+  <div class="chan">
+    <h3><span class="hash">#</span>feedback</h3>
+    <p>Feedback terstruktur adalah cara tercepat dikenal tim produk.</p>
+    <pre class="tpl" id="t2">[Area] Waitlist / Workflow / Notifications / Deposit
+[What I tried] …
+[What happened vs expected] …
+[Why it matters] e.g. SEA users, local on-ramp, notification timing in UTC+7
+[Suggestion] …</pre>
+    <button class="copy" type="button" data-copy="t2">Salin template</button>
+    <p class="note-id">Ide regional (ajukan sebagai saran): on-ramp lokal IDR/QRIS, notifikasi via Telegram, sinyal pasar Asia (IDX, komoditas regional), dokumentasi bahasa lokal.</p>
+  </div>
+</section>
+
+<section id="mod">
+  <div class="sec-head"><span class="eyebrow">Langkah realistis</span><h2>Jalur ke Regional Moderator</h2></div>
+  <ol class="steps">
+    <li><span><b>Konsisten di jam Asia.</b> Aktif setiap hari saat tim AS tidur. Coverage zona waktu adalah alasan utama proyek AS butuh regional mod.</span></li>
+    <li><span><b>Bangun rekam jejak 2–4 minggu.</b> Jawaban FAQ yang benar, ide berkualitas, feedback terstruktur, laporan scam.</span></li>
+    <li><span><b>Kuasai produknya</b> begitu dapat akses. Mod yang bisa membantu troubleshooting deposit dan workflow jauh lebih berharga.</span></li>
+    <li><span><b>Bawa nilai di luar Discord.</b> Thread X yang akurat tentang Catalyst, dengan tag @CatalystLabsX.</span></li>
+    <li><span><b>Ajukan diri saat waktunya tepat.</b> Saat ada pengumuman program mod/ambassador, atau setelah kamu dikenal. Jangan spam DM founder.</span></li>
+  </ol>
+  <div class="never"><p class="subhead">Jangan pernah</p><ul class="plain">
+    <li>Menjanjikan token atau airdrop</li><li>Memberi saran finansial yang pasti</li><li>Mengklaim fitur yang belum diumumkan</li><li>Menyebar kabar yang belum dikonfirmasi tim</li></ul></div>
+  <div class="chan">
+    <h3>Pesan pengajuan</h3>
+    <pre class="tpl" id="t3">Hi team! I'm @&lt;handle&gt;, based in Indonesia (UTC+7). I've been active daily in #trade-ideas, #general and #feedback since Oct 2026: answering FAQs, flagging fake "Catalyst" tokens, and sharing structured workflow ideas. I'd love to help as a Regional Moderator for the Asia timezone: covering hours when the US team is offline, onboarding SEA users, and relaying regional feedback (local on-ramps, Asian market signals). Happy to start with any trial role. Thanks!</pre>
+    <button class="copy" type="button" data-copy="t3">Salin pesan</button>
+  </div>
+</section>
+
+<section id="tim">
+  <div class="sec-head"><span class="eyebrow">Siapa di balik Catalyst</span><h2>Tim, investor, timeline</h2></div>
+  <div class="datagrid">
+    <div><b>Justin Zheng · 25</b>Co-founder · <a href="https://x.com/jzlegion" target="_blank" rel="noopener">@jzlegion</a>. Raise seed pertama di usia 16, Pioneer grant, IDEO CoLab fellow termuda (2×), eks Worldcoin.</div>
+    <div><b>Dylan Iskandar · 21</b>Co-founder · <a href="https://x.com/iskdyl" target="_blank" rel="noopener">@iskdyl</a>. Riset cybersecurity untuk US DoD, Jane Street scholar di Stanford (keluar untuk Catalyst).</div>
+    <div><b>Tim inti</b>Engineer dari Palantir, Scale AI, Citadel, Citadel Securities, HRT, Jump. Sedang merekrut.</div>
+    <div><b>Entitas</b>Catos Labs, Inc. · Delaware, AS</div>
+  </div>
+  <p><b>Investor (seed $30M):</b> Sequoia (lead, George Robson), Jump, Lux Capital, PeakXV, AntiFund, Selini Capital, SF1 (first check), Coinbase, Premji Invest.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Tanggal</th><th>Peristiwa</th></tr></thead>
+    <tbody class="num">
+      <tr><td>14 Jan 2025</td><td>Akun X @CatalystLabsX dibuat</td></tr>
+      <tr><td>2025</td><td>Perusahaan didirikan; founder bertemu di poker 2019 di konferensi Tyler Cowen</td></tr>
+      <tr><td>18 Mar 2026</td><td>Waitlist publik pertama</td></tr>
+      <tr><td>Pilot</td><td>Power trader, diklaim “hundreds of millions” volume dalam beberapa minggu</td></tr>
+      <tr><td>8 Okt 2026</td><td>“Introducing Catalyst” + seed $30M; akses dibuka per batch</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="glosarium">
+  <div class="sec-head"><span class="eyebrow">Istilah</span><h2>Glosarium cepat</h2></div>
+  <dl class="gloss">
+    <div><dt>Intent</dt><dd>Niat atau tesis dalam bahasa biasa</dd></div>
+    <div><dt>Workflow</dt><dd>Rangkaian sinyal → kondisi → aksi</dd></div>
+    <div><dt>Strategy</dt><dd>Workflow yang sudah di-approve dan berjalan dengan kasnya sendiri</dd></div>
+    <div><dt>Signal</dt><dd>Data pemicu: harga, odds, tweet, berita</dd></div>
+    <div><dt>Trigger</dt><dd>Kondisi yang memicu aksi</dd></div>
+    <div><dt>Catalyst Cash</dt><dd>Saldo utama yang dirutekan otomatis ke venue</dd></div>
+    <div><dt>Quick trade</dt><dd>Trade manual dalam beberapa klik</dd></div>
+    <div><dt>Research preview</dt><dd>Fase uji terbatas dan gratis</dd></div>
+    <div><dt>Non-custodial</dt><dd>Dana ada di wallet milikmu sendiri</dd></div>
+    <div><dt>Perps</dt><dd>Kontrak berjangka tanpa tanggal jatuh tempo</dd></div>
+    <div><dt>Prediction market</dt><dd>Pasar odds sebuah kejadian</dd></div>
+    <div><dt>Hedge</dt><dd>Posisi untuk melindungi dari risiko</dd></div>
+  </dl>
+</section>
+
+<section id="sumber">
+  <div class="sec-head"><span class="eyebrow">Rujukan</span><h2>Sumber</h2></div>
+  <div class="src">
+    <a href="https://catalyst.app/faq" target="_blank" rel="noopener">catalyst.app/faq: FAQ resmi</a>
+    <a href="https://sequoiacap.com/article/partnering-with-catalyst-turning-ideas-into-trades" target="_blank" rel="noopener">Sequoia: Partnering with Catalyst</a>
+    <a href="https://fortune.com/2026/10/08/sequoia-backed-catalyst-raises-30-million-build-ai-trading-agents-everyday-investors/" target="_blank" rel="noopener">Fortune, 8 Okt 2026</a>
+    <a href="https://x.com/CatalystLabsX" target="_blank" rel="noopener">X @CatalystLabsX</a>
+    <a href="https://discord.gg/usecatalyst" target="_blank" rel="noopener">Discord: usecatalyst</a>
+  </div>
+</section>
+
+</div>
+</main>
+<footer><div class="wrap">Panduan komunitas tidak resmi, disusun 17 Okt 2026 dari sumber publik. Tidak berafiliasi dengan Catalyst / Catos Labs, Inc. Bukan saran finansial.</div></footer>
+
+<script>
+(function(){
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var el=document.getElementById(btn.getAttribute('data-copy'));
+      if(!el) return;
+      var text=el.textContent.trim(), label=btn.textContent;
+      function ok(){btn.textContent='Tersalin';btn.classList.add('done');setTimeout(function(){btn.textContent=label;btn.classList.remove('done')},1600)}
+      function fallback(){try{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Teks dipilih, tekan salin'}catch(e){}}
+      try{navigator.clipboard.writeText(text).then(ok,fallback)}catch(e){fallback()}
+    });
+  });
+  var links=[].slice.call(document.querySelectorAll('nav.chips a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.remove('on')});
+          var a=map[e.target.id]; if(a){a.classList.add('on');try{a.scrollIntoView({block:'nearest',inline:'center'})}catch(x){}}
+        }
+      });
+    },{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
